@@ -1,5 +1,5 @@
 import React from "react";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
 
 const data = [
   { name: "Group A", value: 400 },
@@ -39,23 +39,29 @@ const renderCustomizedLabel = ({
 
 export default function SectionB() {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <PieChart width={400} height={400}>
-        <Pie
-          data={data}
-          cx="50%"
-          cy="50%"
-          labelLine={false}
-          label={renderCustomizedLabel}
-          outerRadius={80}
-          fill="#8884d8"
-          dataKey="value"
-        >
-          {data.map((entry, index) => (
-            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-          ))}
-        </Pie>
-      </PieChart>
-    </ResponsiveContainer>
+    <PieChart width={250} height={250}>
+      <Pie
+        data={data}
+        cx="50%"
+        cy="50%"
+        labelLine={false}
+        label={renderCustomizedLabel}
+        outerRadius={80}
+        fill="#8884d8"
+        dataKey="value"
+      >
+        <Tooltip
+          itemStyle={{
+            color: "#fff",
+            backgroundColor: "#0A1322",
+            borderRadius: "10px",
+          }}
+          contentStyle={{ backgroundColor: "#0A1322" }}
+        />
+        {data.map((entry, index) => (
+          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+        ))}
+      </Pie>
+    </PieChart>
   );
 }

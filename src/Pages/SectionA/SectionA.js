@@ -1,82 +1,143 @@
 import React from "react";
 import {
-  ComposedChart,
-  Line,
+  AreaChart,
   Area,
-  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
+  Line,
+  Legend,
+  Bar,
+  Scatter,
 } from "recharts";
+import "./SectionA.css";
 
 const data = [
   {
-    name: "Page A",
-    uv: 590,
-    pv: 800,
-    amt: 1400,
+    uv: 4000,
+    pv: 2400,
+    amt: 400,
   },
   {
-    name: "Page B",
-    uv: 868,
-    pv: 967,
-    amt: 1506,
+    uv: 3000,
+    pv: 1398,
+    amt: 2010,
   },
   {
-    name: "Page C",
-    uv: 1397,
-    pv: 1098,
-    amt: 989,
+    uv: 4400,
+    pv: 9800,
+    amt: 1290,
   },
   {
-    name: "Page D",
-    uv: 1480,
-    pv: 1200,
-    amt: 1228,
+    uv: 2780,
+    pv: 3908,
+    amt: 600,
   },
   {
-    name: "Page E",
-    uv: 1520,
-    pv: 1108,
-    amt: 1100,
+    uv: 1890,
+    pv: 4800,
+    amt: 4781,
   },
   {
-    name: "Page F",
-    uv: 1400,
-    pv: 680,
-    amt: 1700,
+    uv: 2390,
+    pv: 3800,
+    amt: 8500,
+  },
+  {
+    uv: 90,
+    pv: 4300,
+    amt: 100,
   },
 ];
+
+const GradientColors = () => {
+  return (
+    <linearGradient id="colorView" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="30%" stopColor="#E2BDFE" stopOpacity={0.2} />
+      <stop offset="75%" stopColor="#F0DEFE" stopOpacity={0.05} />
+      <stop offset="95%" stopColor="#F8EFFF" stopOpacity={0.02} />
+    </linearGradient>
+  );
+};
+const GradientColors2 = () => {
+  return (
+    <linearGradient id="colorView2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="30%" stopColor="#B2FFFB" stopOpacity={0.2} />
+      <stop offset="75%" stopColor="#D9FFFD" stopOpacity={0.05} />
+      <stop offset="95%" stopColor="#ECFFFE" stopOpacity={0.02} />
+    </linearGradient>
+  );
+};
+const GradientColors3 = () => {
+  return (
+    <linearGradient id="colorView3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="30%" stopColor="#FFE5C8" stopOpacity={0.2} />
+      <stop offset="75%" stopColor="#FFF2E3" stopOpacity={0.05} />
+      <stop offset="95%" stopColor="#FFF9F1" stopOpacity={0.02} />
+    </linearGradient>
+  );
+};
 const SectionA = () => {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <ComposedChart
+    <ResponsiveContainer width="97%" height={300}>
+      <AreaChart
+        data={data}
         width={500}
         height={400}
-        data={data}
         margin={{
           top: 20,
-          right: 80,
+          right: 20,
           bottom: 20,
           left: 20,
         }}
       >
-        <CartesianGrid stroke="#f5f5f5" />
-        <XAxis
-          dataKey="name"
-          label={{ value: "Pages", position: "insideBottomRight", offset: 0 }}
-          scale="band"
+        <defs>
+          <GradientColors />
+        </defs>
+        <defs>
+          <GradientColors2 />
+        </defs>
+        <defs>
+          <GradientColors3 />
+        </defs>
+        <CartesianGrid strokeDasharray="3 3" stroke="#991BFA" opacity={0.4} />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip
+          itemStyle={{
+            color: "#fff",
+            backgroundColor: "#0A1322",
+            borderRadius: "10px",
+          }}
+          contentStyle={{ backgroundColor: "#0A1322" }}
         />
-        <YAxis label={{ value: "Index", angle: -90, position: "insideLeft" }} />
-        <Tooltip />
-        <Legend />
-        <Area type="monotone" dataKey="amt" fill="#8884d8" stroke="#8884d8" />
-        <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-        <Line type="monotone" dataKey="uv" stroke="#ff7300" />
-      </ComposedChart>
+        {/* <Legend /> */}
+        {/* <Area
+          type="monotone"
+          dataKey="amt"
+          className="bgShadow"
+          fill="url(#colorView)"
+          strokeWidth={3}
+          stroke="#FFA63F"
+        /> */}
+        <Area
+          type="monotone"
+          dataKey="pv"
+          fill="url(#colorView2)"
+          strokeWidth={3}
+          stroke="#01F1E3"
+        />
+        <Area
+          type="monotone"
+          dataKey="uv"
+          fill="url(#colorView3)"
+          strokeOpacity={1}
+          strokeWidth={3}
+          stroke="#9E28F9"
+        />
+      </AreaChart>
     </ResponsiveContainer>
   );
 };

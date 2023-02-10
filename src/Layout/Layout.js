@@ -9,6 +9,9 @@ import {
   AiOutlineTeam,
   AiOutlineUser,
 } from "react-icons/ai";
+import { HiMenuAlt1 } from "react-icons/hi";
+import { HiOutlineBellAlert, HiOutlineEnvelope } from "react-icons/hi2";
+import { IconContext } from "react-icons";
 
 import { RxDashboard } from "react-icons/rx";
 
@@ -18,12 +21,29 @@ const Layout = () => {
       <div className="drawer drawer-mobile">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-          <label
-            htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden"
-          >
-            Open drawer
-          </label>
+          <div className="flex justify-between items-center px-10">
+            <div className="flex items-center">
+              <label htmlFor="my-drawer-2" className="drawer-button mr-5 py-5">
+                <IconContext.Provider value={{ color: "gray", size: 30 }}>
+                  <HiMenuAlt1 />
+                </IconContext.Provider>
+              </label>
+
+              <p className="text-gray-400 text-center font-semibold tracking-widest text-2xl  uppercase font-Babes">
+                Address <span>Contact</span>
+              </p>
+            </div>
+
+            <aside className="flex items-center space-x-5">
+              <IconContext.Provider value={{ color: "gray", size: 20 }}>
+                <HiOutlineBellAlert />
+              </IconContext.Provider>
+              <IconContext.Provider value={{ color: "gray", size: 20 }}>
+                <HiOutlineEnvelope />
+              </IconContext.Provider>
+            </aside>
+          </div>
+
           <Outlet />
         </div>
         <div className="drawer-side bg-[#0B150F] relative">
@@ -98,7 +118,7 @@ const Layout = () => {
           </ul>
 
           <div className="absolute bottom-8 w-full">
-            <div className="bg-gray-200 w-4/5 mx-auto p-5 rounded-2xl">
+            <div className="bg-gradient-to-r from-gray-100 to-gray-300 w-4/5 mx-auto p-5 rounded-2xl">
               <aside className="flex justify-between items-center mb-4">
                 <h1 className="cursor-pointer">
                   <AiOutlineHistory size={28} />

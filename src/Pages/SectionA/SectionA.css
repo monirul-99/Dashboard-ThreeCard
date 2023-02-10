@@ -1,0 +1,8 @@
+.bgShadow{
+    background: rgb(158,40,249);
+    background: linear-gradient(4deg, rgba(158,40,249,0.38699229691876746) 0%, rgba(75,76,78,0.227328431372549) 98%);
+}
+.bgShadow2{
+    background: rgb(1,241,227);
+background: linear-gradient(4deg, rgba(1,241,227,0.6530987394957983) 0%, rgba(75,76,78,0.227328431372549) 98%);
+}
